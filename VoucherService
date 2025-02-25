@@ -1,0 +1,17 @@
+@Service
+@RequiredArgsConstructor
+@Slf4j
+public class VoucherService implements AbstractVoucherService {
+
+ @Override
+    public void onExit(Message<VoucherEvent> exitVoucherMessage) {
+
+}
+
+ private HttpStatus computeHttpStatus(Exception exception){
+        return (exception instanceof RestClientResponseException)
+                ? HttpStatus.valueOf(((RestClientResponseException) exception).getRawStatusCode())
+                : null;
+    }
+
+}
